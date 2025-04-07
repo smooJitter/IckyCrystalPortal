@@ -1,4 +1,4 @@
-# TravelAI - AI-Powered Travel Assistant
+# IckyCrystals Portal - Your Spiritual Business Companion
 
 TravelAI is a Next.js application that uses the Mastra AI agent framework to help you plan your next trip.
 
@@ -31,7 +31,7 @@ TravelAI is a Next.js application that uses the Mastra AI agent framework to hel
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/travel-ai.git
+git clone https://github.com/IckyCrystals/Portals.git
 cd travel-ai
 ```
 
@@ -131,7 +131,7 @@ Safely stores your sensitive information:
 ### 1. Initial Setup
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/crystal-portal.git
+git clone https://github.com/IckyCrystals/Portals.git
 
 # Install dependencies
 npm install
@@ -217,19 +217,19 @@ crystal-portal/
 ### Documentation
 - [Soul Blueprint Form Guide](./app/README.md)
 - [AI System Documentation](./mastra-agentic/README.md)
-- [API Reference](https://docs.crystalportal.com/api)
+- [API Reference](https://docs.ickycrystals.com/api)
 
 ### Community
 Join our community of spiritual business owners:
-- [Discord Community](https://discord.gg/crystalportal)
-- [Monthly Webinars](https://crystalportal.com/webinars)
-- [Owner's Circle](https://crystalportal.com/circle)
+- [Discord Community](https://discord.gg/ickycrystals)
+- [Monthly Webinars](https://ickycrystals.com/webinars)
+- [Owner's Circle](https://ickycrystals.com/circle)
 
 ### Support
 We're here to help you succeed:
-- Email: support@crystalportal.com
+- Email: support@ickycrystals.com
 - Phone: 1-888-CRYSTAL
-- [Book a Consultation](https://crystalportal.com/consult)
+- [Book a Consultation](https://ickycrystals.com/consult)
 
 ## Contributing
 
@@ -241,4 +241,185 @@ This project is licensed under the Crystal Portal License - see the [LICENSE](LI
 
 ---
 
-💫 Ready to transform your spiritual business? [Get Started Now](https://crystalportal.com/start) 
+💫 Ready to transform your spiritual business? [Get Started Now](https://ickycrystals.com/start)
+
+## Data Flow Examples
+
+### 1. New Staff Onboarding Flow
+```mermaid
+sequenceDiagram
+    participant Owner
+    participant Form
+    participant AI
+    participant DB
+    
+    Owner->>Form: Enter staff details
+    Form->>AI: Process blueprint
+    AI->>DB: Store profile
+    AI->>AI: Generate insights
+    AI->>Owner: Initial recommendations
+    
+    loop Weekly Check-ins
+        AI->>DB: Fetch progress
+        AI->>Owner: Update insights
+        Owner->>Form: Update data
+    end
+```
+
+### 2. Crystal Alignment Process
+```mermaid
+graph TD
+    subgraph "Data Collection"
+        A[Staff Preferences] --> B[Crystal Database]
+        C[Store Inventory] --> B
+    end
+    
+    subgraph "Analysis"
+        B --> D[Energy Matching]
+        D --> E[Compatibility Check]
+        E --> F[Assignment Suggestions]
+    end
+    
+    subgraph "Implementation"
+        F --> G[Staff Training]
+        F --> H[Display Layout]
+        F --> I[Customer Matching]
+    end
+```
+
+### 3. Real-World Example: Staff Development
+
+```typescript
+// Example of data flow through system
+interface StaffJourney {
+  // Initial Data Collection
+  initialBlueprint: {
+    personal: PersonalInfo;
+    crystals: CrystalPreferences[];
+    goals: DevelopmentGoals;
+  };
+
+  // AI Processing
+  analysis: {
+    strengths: string[];
+    opportunities: string[];
+    recommendations: Action[];
+  };
+
+  // Ongoing Development
+  development: {
+    trainings: TrainingProgress[];
+    achievements: Milestone[];
+    feedback: FeedbackLoop[];
+  };
+}
+
+// Example Implementation
+async function processStaffJourney(staffId: string) {
+  // 1. Collect Initial Data
+  const blueprint = await collectBlueprintData(staffId);
+  
+  // 2. AI Analysis
+  const analysis = await analyzeStaffPotential(blueprint);
+  
+  // 3. Generate Development Plan
+  const developmentPlan = await createDevelopmentPlan(analysis);
+  
+  // 4. Implementation & Monitoring
+  const progress = await trackDevelopment(staffId, developmentPlan);
+  
+  // 5. Continuous Improvement
+  const updates = await updateRecommendations(progress);
+  
+  return {
+    blueprint,
+    analysis,
+    developmentPlan,
+    progress,
+    updates
+  };
+}
+```
+
+### 4. System Integration Flow
+```mermaid
+graph TB
+    subgraph "Frontend Layer"
+        A1[Blueprint Form]
+        A2[Dashboard]
+        A3[Reports]
+    end
+    
+    subgraph "API Layer"
+        B1[Data Validation]
+        B2[Auth & Security]
+        B3[Rate Limiting]
+    end
+    
+    subgraph "Processing Layer"
+        C1[Mastra AI Agents]
+        C2[Analysis Engine]
+        C3[Action Generator]
+    end
+    
+    subgraph "Storage Layer"
+        D1[Supabase Tables]
+        D2[Document Store]
+        D3[Cache Layer]
+    end
+    
+    A1 & A2 & A3 --> B1 & B2 & B3
+    B1 & B2 & B3 --> C1 & C2 & C3
+    C1 & C2 & C3 --> D1 & D2 & D3
+    D1 & D2 & D3 --> A2 & A3
+```
+
+### 5. Data Transformation Example
+```typescript
+// Example of data transformation through system layers
+interface RawStaffData {
+  name: string;
+  birthDate: string;
+  crystalPreferences: string[];
+}
+
+interface ProcessedStaffData {
+  id: string;
+  personal: {
+    name: string;
+    birthChart: AstrologicalChart;
+    energyProfile: EnergySignature;
+  };
+  crystals: {
+    preferences: CrystalAlignment[];
+    recommendations: CrystalMatch[];
+  };
+}
+
+interface BusinessInsight {
+  staffMember: ProcessedStaffData;
+  recommendations: Action[];
+  timeline: Timeline;
+  metrics: PerformanceMetrics;
+}
+
+// Example transformation flow
+const transformationPipeline = async (rawData: RawStaffData): Promise<BusinessInsight> => {
+  // 1. Data Validation & Enrichment
+  const validatedData = await validateStaffData(rawData);
+  
+  // 2. Astrological Processing
+  const astroData = await processAstrologicalData(validatedData);
+  
+  // 3. Crystal Matching
+  const crystalMatches = await performCrystalMatching(astroData);
+  
+  // 4. Business Intelligence
+  const insights = await generateBusinessInsights({
+    staff: astroData,
+    crystals: crystalMatches
+  });
+  
+  return insights;
+};
+``` 
