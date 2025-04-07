@@ -1,10 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+
+// Define types for form sections
+type PersonalGoals = {
+  career: string;
+  spiritual: string;
+  financial: string;
+};
 
 export default function BlueprintForm() {
-  const router = useRouter();
   const [formData, setFormData] = useState({
     // Personal Information
     name: '',
@@ -39,7 +44,7 @@ export default function BlueprintForm() {
   const [submitResult, setSubmitResult] = useState<{success: boolean, message: string} | null>(null);
 
   // Handler for form changes
-  const handleChange = (section: string, data: any) => {
+  const handleChange = (section: string, data: string | string[] | PersonalGoals) => {
     setFormData(prev => ({
       ...prev,
       [section]: data
@@ -90,30 +95,30 @@ export default function BlueprintForm() {
     <div className="max-w-3xl mx-auto py-6">
       {/* Top Nav Bar */}
       <div className="flex items-center justify-between mb-6">
-        <div className="bg-black px-3 py-2 rounded">
+        <div className="bg-black px-3 py-2 rounded transform rotate(-1deg) hover:rotate-1 transition-transform">
           <span className="text-white font-['Space_Mono'] font-bold">💎 Crystal Portal</span>
         </div>
         <div className="flex items-center">
-          <div className="bg-[#9966CC] text-white px-3 py-1 rounded-md mr-2 font-['Space_Mono']">
+          <div className="bg-[#9966CC] text-white px-3 py-1 rounded-md mr-2 font-['Space_Mono'] transform rotate(1deg) hover:rotate(-1deg) transition-transform">
             Soul Blueprint ▼
           </div>
-          <div className="bg-[#00FF00] border-2 border-black w-8 h-8 flex items-center justify-center text-black font-bold rounded-sm">?</div>
+          <div className="bg-[#00FF00] border-2 border-black w-8 h-8 flex items-center justify-center text-black font-bold rounded-sm transform rotate(-2deg) hover:rotate(2deg) hover:scale-110 transition-transform">?</div>
         </div>
       </div>
 
       {/* Main Title */}
       <div className="text-center mb-10">
-        <div className="bg-black inline-block px-4 py-2">
+        <div className="bg-black inline-block px-4 py-2 transform rotate(-1deg) hover:rotate-1 transition-transform">
           <span className="text-white font-['Space_Mono'] text-3xl font-bold">Crystal Portal</span>
         </div>
-        <div className="bg-[#9966CC] text-white px-2 py-1 text-sm rounded inline-block ml-2 font-['Space_Mono']">
+        <div className="bg-[#9966CC] text-white px-2 py-1 text-sm rounded inline-block ml-2 font-['Space_Mono'] transform rotate(2deg) hover:rotate(-2deg) transition-transform">
           Soul Blueprint
         </div>
       </div>
       
       {/* Submission Result Message */}
       {submitResult && (
-        <div className={`p-4 mb-6 rounded-lg border-2 border-black ${submitResult.success ? 'bg-green-200' : 'bg-red-200'}`}>
+        <div className={`p-4 mb-6 rounded-lg border-2 border-black ${submitResult.success ? 'bg-green-200' : 'bg-red-200'} transform ${submitResult.success ? 'rotate(-1deg)' : 'rotate(1deg)'}`}>
           <p className="font-['Space_Mono'] text-center">{submitResult.message}</p>
         </div>
       )}
@@ -139,22 +144,28 @@ export default function BlueprintForm() {
             
             <div>
               <label className="form-label text-white">Birthday</label>
-              <input 
-                type="date"
-                className="form-input"
-                value={formData.birthday}
-                onChange={(e) => handleChange('birthday', e.target.value)}
-              />
+              <div className="relative">
+                <input 
+                  type="date"
+                  className="form-input pl-9"
+                  value={formData.birthday}
+                  onChange={(e) => handleChange('birthday', e.target.value)}
+                />
+                <span className="absolute left-3 top-1/2 transform -translate-y-1/2">📅</span>
+              </div>
             </div>
             
             <div>
               <label className="form-label text-white">Birth Time (if known)</label>
-              <input 
-                type="time"
-                className="form-input"
-                value={formData.birthTime}
-                onChange={(e) => handleChange('birthTime', e.target.value)}
-              />
+              <div className="relative">
+                <input 
+                  type="time"
+                  className="form-input pl-9"
+                  value={formData.birthTime}
+                  onChange={(e) => handleChange('birthTime', e.target.value)}
+                />
+                <span className="absolute left-3 top-1/2 transform -translate-y-1/2">⏰</span>
+              </div>
             </div>
             
             <div>
@@ -471,4 +482,4 @@ export default function BlueprintForm() {
       </form>
     </div>
   );
-} 
+}

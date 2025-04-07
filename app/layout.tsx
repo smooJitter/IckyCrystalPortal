@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,6 +17,31 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Debug script to log 404 errors */}
+        <Script id="debug-404" strategy="afterInteractive">
+          {`
+            // Log URL to help debug page loads
+            console.log("Page loaded: " + window.location.pathname);
+            
+            // Monitor for 404 errors in fetch requests
+            const originalFetch = window.fetch;
+            window.fetch = function() {
+              return originalFetch.apply(this, arguments)
+                .then(response => {
+                  if (response.status === 404) {
+                    console.error('404 Error for URL:', response.url);
+                  }
+                  return response;
+                })
+                .catch(error => {
+                  console.error('Fetch error:', error);
+                  throw error;
+                });
+            };
+          `}
+        </Script>
+      </head>
       <body className={inter.className}>
         <div className="min-h-screen bg-[#FFD700]">
           <header className="bg-[#FFD700] py-2">

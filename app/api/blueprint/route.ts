@@ -1,27 +1,41 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateEmployeeActions, EmployeeBlueprintData } from '@/lib/agents/blueprintAgent';
+import { processEmployeeBlueprint } from '@/mastra-agentic/workflows/workflow';
+
+// Configure OpenAI API key for Mastra agent
+if (!process.env.OPENAI_API_KEY) {
+  console.warn('Warning: OPENAI_API_KEY environment variable is not set. The Mastra agent may not work properly.');
+}
 
 export async function POST(request: NextRequest) {
   try {
-    const blueprintData: EmployeeBlueprintData = await request.json();
-    
-    // Validate the data (minimal validation for now)
+    // Parse request body
+    const blueprintData = await request.json();
+
+    // Validate required fields
     if (!blueprintData.name) {
       return NextResponse.json(
-        { error: 'Employee name is required' },
+        { error: 'Name is required' },
         { status: 400 }
       );
     }
-    
-    // Generate actions using the Mastra agent
-    const actions = await generateEmployeeActions(blueprintData);
-    
+
+    // Process the blueprint using our multi-agent workflow
+    const result = await processEmployeeBlueprint(blueprintData);
+
+    if (!result.success) {
+      console.error('Error processing blueprint:', result.error);
+      return NextResponse.json(
+        { error: 'Failed to process blueprint' },
+        { status: 500 }
+      );
+    }
+
     // Return the generated actions
-    return NextResponse.json({ actions });
+    return NextResponse.json({ actions: result.actions });
   } catch (error) {
-    console.error('Error processing employee blueprint:', error);
+    console.error('Error in blueprint API:', error);
     return NextResponse.json(
-      { error: 'Failed to process employee blueprint' },
+      { error: 'Internal server error' },
       { status: 500 }
     );
   }
