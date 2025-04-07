@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+@layer base {
+  html, body {
+    @apply bg-[#FFD700];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Space_Mono'] font-bold text-black;
+  }
+  
+  input[type="checkbox"], 
+  input[type="radio"] {
+    @apply appearance-none;
+  }
+}
+
+@layer components {
+  .travel-card {
+    @apply rounded-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-6 mb-6 relative;
+  }
+
+  .travel-card-green {
+    @apply travel-card bg-[#98FB98];
+  }
+
+  .travel-card-pink {
+    @apply travel-card bg-[#FFB6C1];
+  }
+
+  .travel-card-blue {
+    @apply travel-card bg-[#87CEEB];
+  }
+
+  .travel-card-orange {
+    @apply travel-card bg-[#FFA07A];
+  }
+
+  .card-title {
+    @apply inline-block bg-black text-white font-['Space_Mono'] px-3 py-1 mb-4 text-lg;
+  }
+
+  .form-input {
+    @apply w-full px-3 py-2 bg-white border-2 border-black rounded focus:outline-none focus:ring-2 focus:ring-black;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-black mb-2;
+  }
+
+  .checkbox-label {
+    @apply flex items-center cursor-pointer mb-2;
+  }
+
+  .custom-checkbox {
+    @apply h-5 w-5 border-2 border-black rounded appearance-none checked:bg-black relative;
+  }
+
+  .custom-checkbox:checked::after {
+    content: '✓';
+    @apply absolute text-white flex justify-center items-center text-xs top-0 left-0 w-full h-full;
+  }
+
+  .submit-button {
+    @apply w-full bg-[#FA8072] border-2 border-black text-white py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#E9967A] transition-colors font-['Space_Mono'] text-lg;
+  }
+
+  .date-input {
+    @apply form-input font-['Space_Mono'];
+  }
+
+  .select-input {
+    @apply form-input appearance-none bg-white relative pr-8;
+  }
+  
+  .select-input::-ms-expand {
+    @apply hidden;
+  }
+  
+  /* Add custom dropdown arrow */
+  .select-wrapper {
+    @apply relative;
+  }
+  
+  .select-wrapper::after {
+    content: '▼';
+    @apply absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none text-black text-xs;
+  }
+
+  .slider {
+    @apply w-full h-2 bg-white rounded-lg appearance-none cursor-pointer border border-black;
+  }
+
+  .slider::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 bg-blue-500 border-2 border-black rounded-full;
+  }
+  
+  .slider::-moz-range-thumb {
+    @apply w-5 h-5 bg-blue-500 border-2 border-black rounded-full;
+  }
+
+  .radio-group {
+    @apply flex space-x-4;
+  }
+
+  .custom-radio {
+    @apply h-4 w-4 border-2 border-black rounded-full appearance-none checked:bg-black relative;
+  }
+
+  .custom-radio:checked::after {
+    content: '';
+    @apply absolute w-1 h-1 bg-white rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .header-container {
+    @apply bg-black inline-block p-2 mb-2;
+  }
+
+  .header-title {
+    @apply text-white font-['Space_Mono'] font-bold text-3xl;
+  }
+
+  .agent-badge {
+    @apply bg-[#FF69B4] text-white px-3 py-1 rounded-sm font-['Space_Mono'] ml-2;
+  }
+} 
