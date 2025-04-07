@@ -40,6 +40,30 @@
     @apply travel-card bg-[#FFA07A];
   }
 
+  .crystal-card {
+    @apply rounded-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-6 mb-6 relative;
+  }
+  
+  .crystal-card-amethyst {
+    @apply crystal-card bg-[#9966CC] text-white;
+  }
+  
+  .crystal-card-rose-quartz {
+    @apply crystal-card bg-[#F7CAC9];
+  }
+  
+  .crystal-card-citrine {
+    @apply crystal-card bg-[#E4D00A];
+  }
+  
+  .crystal-card-aventurine {
+    @apply crystal-card bg-[#84C3BE];
+  }
+  
+  .crystal-card-clear-quartz {
+    @apply crystal-card bg-white;
+  }
+
   .card-title {
     @apply inline-block bg-black text-white font-['Space_Mono'] px-3 py-1 mb-4 text-lg;
   }
@@ -67,6 +91,10 @@
 
   .submit-button {
     @apply w-full bg-[#FA8072] border-2 border-black text-white py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#E9967A] transition-colors font-['Space_Mono'] text-lg;
+  }
+  
+  .blueprint-submit-button {
+    @apply w-full bg-[#9966CC] border-2 border-black text-white py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#8A2BE2] transition-colors font-['Space_Mono'] text-lg;
   }
 
   .date-input {
@@ -126,5 +154,9 @@
 
   .agent-badge {
     @apply bg-[#FF69B4] text-white px-3 py-1 rounded-sm font-['Space_Mono'] ml-2;
+  }
+  
+  .crystal-badge {
+    @apply bg-[#9966CC] text-white px-3 py-1 rounded-sm font-['Space_Mono'] ml-2;
   }
 } 
