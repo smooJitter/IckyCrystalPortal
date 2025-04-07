@@ -42,26 +42,61 @@
 
   .crystal-card {
     @apply rounded-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-6 mb-6 relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform: rotate(-0.5deg);
+  }
+  
+  .crystal-card:hover {
+    transform: rotate(0.5deg) translateY(-2px);
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
   }
   
   .crystal-card-amethyst {
     @apply crystal-card bg-[#9966CC] text-white;
+    transform: rotate(-0.6deg);
+  }
+  
+  .crystal-card-amethyst:hover {
+    transform: rotate(0.6deg) translateY(-3px);
   }
   
   .crystal-card-rose-quartz {
     @apply crystal-card bg-[#F7CAC9];
+    transform: rotate(0.4deg);
+  }
+  
+  .crystal-card-rose-quartz:hover {
+    transform: rotate(-0.4deg) translateY(-3px);
   }
   
   .crystal-card-citrine {
     @apply crystal-card bg-[#E4D00A];
+    transform: rotate(-0.3deg);
+  }
+  
+  .crystal-card-citrine:hover {
+    transform: rotate(0.3deg) translateY(-3px);
   }
   
   .crystal-card-aventurine {
     @apply crystal-card bg-[#84C3BE];
+    transform: rotate(0.5deg);
+  }
+  
+  .crystal-card-aventurine:hover {
+    transform: rotate(-0.5deg) translateY(-3px);
   }
   
   .crystal-card-clear-quartz {
-    @apply crystal-card bg-white;
+    @apply crystal-card bg-gradient-to-br from-[#F5F5FF] to-[#E6E6FA] text-black;
+    transform: rotate(-0.2deg);
+    backdrop-filter: blur(8px);
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1), inset 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  
+  .crystal-card-clear-quartz:hover {
+    transform: rotate(0.2deg) translateY(-3px);
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1), inset 0 0 30px rgba(255, 255, 255, 0.7);
   }
 
   .card-title {
@@ -73,7 +108,22 @@
   }
 
   .form-label {
-    @apply block text-sm font-medium text-black mb-2;
+    @apply block text-sm font-medium mb-2;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  /* White text for dark backgrounds */
+  .crystal-card-amethyst .form-label {
+    @apply text-white;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Black text for light backgrounds */
+  .crystal-card-rose-quartz .form-label,
+  .crystal-card-citrine .form-label,
+  .crystal-card-aventurine .form-label,
+  .crystal-card-clear-quartz .form-label {
+    @apply text-black;
   }
 
   .checkbox-label {
@@ -95,6 +145,13 @@
   
   .blueprint-submit-button {
     @apply w-full bg-[#9966CC] border-2 border-black text-white py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#8A2BE2] transition-colors font-['Space_Mono'] text-lg;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform: rotate(-0.3deg);
+  }
+  
+  .blueprint-submit-button:hover {
+    transform: rotate(0.3deg) translateY(-3px);
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
   }
 
   .date-input {
